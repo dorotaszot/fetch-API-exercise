@@ -6,23 +6,17 @@ document.getElementById('button3').addEventListener('click', getExternalAPI);
 // Get locat text file data
 function getText() {
   fetch('test.txt')
-    .then(function (response) {
-      return response.text();
-    })
-    .then(function (data) {
-      document.getElementById('output').innerText = data;
-    });
+    .then(response => response.text())
+    .then(data => document.getElementById('output').innerText = data);
 };
 
 // Get local JSON data
 function getJSON() {
   fetch('posts.json')
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (posts) {
+    .then(response => response.json())
+    .then(posts => {
       let output = '';
-      posts.forEach(function (post) {
+      posts.forEach(post => {
         output += `
         <li>${post.title}</li>
         <li>${post.body}</li>
@@ -39,7 +33,7 @@ function getExternalAPI() {
     .then(response => response.json())
     .then(users => {
       let output = '';
-      users.forEach(function (user) {
+      users.forEach(user => {
         output += `
       <li>${user.login}</li>
       `
